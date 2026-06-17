@@ -669,7 +669,7 @@ echo "53. VSX information"
 			clish -c "show configuration" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "-----VSID $VSID : cluster interfaces-----" >> $HOSTNAME-infocollector2.txt 2>&1
-			vsenv "$VSID"
+			vsenv "$VSID" >> $HOSTNAME-infocollector2.txt 2>&1
 			cphaprob stat >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			cphaprob -a if >> $HOSTNAME-infocollector2.txt 2>&1
