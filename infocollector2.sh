@@ -563,7 +563,7 @@ echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "---Device ARP details---" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "arp -a" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
-	arp -a >> $HOSTNAME-infocollector2.txt 2>&1
+	clish -c 'show arp dynamic all' >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "43. Messages File"
 	printf "%s\n" "---Messages File (Last 200 Lines)---" >> $HOSTNAME-infocollector2.txt 2>&1
