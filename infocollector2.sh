@@ -16,7 +16,7 @@
 # v2.2 - ISP redundancy, reverse proxy cli checks
 # v2.3 - maas status checks 
 # v2.3 - VSX configurations
-# v2.4 - Added interface status and updated ethtool, added Management info 51
+# v2.4 - Added interface status and updated ethtool, added Management info 51, enhanced chk 28
 # 
 ##############
 # REMOVE OLD FILES
@@ -388,6 +388,16 @@ echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "fw stat -b AMW" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	fw stat -b AMW >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---AMW update status---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "cpstat antimalware -f update_status" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	cpstat antimalware -f update_status >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---IPS stat---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "ips stat" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	ips stat >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "29. Dynamic Split Status"
