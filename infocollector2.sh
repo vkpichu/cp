@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20260511
+# last update 20260624
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -571,7 +571,7 @@ echo "42. Proxy ARP Configuration and device ARP details"
 	fi
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "---Device ARP details---" >> $HOSTNAME-infocollector2.txt 2>&1
-	printf "%s\n" "arp -a" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "show arp dynamic all" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c 'show arp dynamic all' >> $HOSTNAME-infocollector2.txt 2>&1
 #
@@ -683,6 +683,8 @@ echo "53. VSX information"
 			cphaprob stat >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			cphaprob -a if >> $HOSTNAME-infocollector2.txt 2>&1
+			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+			clish -c 'show arp dynamic all' >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#Proxy ARP
 			PROXYARP=$FWDIR/conf/local.arp
