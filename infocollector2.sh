@@ -377,6 +377,11 @@ echo "27. CP Watch Dog"
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	cpwd_admin list >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---CP Watch Dog Verbose---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "cpwd_admin list -full" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	cpwd_admin list -full >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "28. Policy Status - FWStat"
 	printf "%s\n" "---Policy Status - FWStat---" >> $HOSTNAME-infocollector2.txt 2>&1
