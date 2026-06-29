@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20260624
+# last update 20260630
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
