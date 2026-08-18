@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20260630
+# last update 20260814
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -16,7 +16,7 @@
 # v2.2 - ISP redundancy, reverse proxy cli checks
 # v2.3 - maas status checks 
 # v2.3 - VSX configurations
-# v2.4 - Added interface status and updated ethtool, added Management info 51, enhanced chk 28
+# v2.4 - Added interface status and updated ethtool, added Management info 51, enhanced chk 28, added more bgp commands
 # 
 ##############
 # REMOVE OLD FILES
@@ -250,12 +250,16 @@ echo "16. Routing Information"
 	printf "%s\n" "show ospf neighbors" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show ospf neighbors" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "show bgp summary" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show bgp summary" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "show bgp peers detailed" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show bgp peers detailed" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "show bgp peers advertise" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	clish -c "show bgp peers advertise" >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "17. Netstat Interface Information"
