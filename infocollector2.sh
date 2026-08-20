@@ -625,7 +625,12 @@ echo "47. Cloud Management Extension Check"
 	printf "%s\n" "vsec_lic_cli view" >> $HOSTNAME-infocollector2.txt 2>&1
 	vsec_lic_cli view >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
-#
+#	
+	printf "%s\n" "---Dynamic Objects check---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "dynamic_objects -l" >> $HOSTNAME-infocollector2.txt 2>&1
+	dynamic_objects -l >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+#	
 echo "48. ReverseProxyCLI rules"
 	printf "%s\n" "---ReverseProxyCLI show rules check---" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "ReverseProxyCLI show rules" >> $HOSTNAME-infocollector2.txt 2>&1
