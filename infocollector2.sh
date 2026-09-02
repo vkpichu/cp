@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20260814
+# last update 20260902
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -43,6 +43,11 @@ echo "01. Configuration Backup"
 	printf "%s\n" "show configuration" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show configuration" >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---VPN tunnel Backup---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "show configuration vpnt" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	clish -c "show configuration vpnt" >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "---uptime---" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
