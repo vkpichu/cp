@@ -1,1 +1,1 @@
-set security-gateway cloud-mgmt-service on auth-token aHR0cHM6Ly9jbG91ZGluZnJhLWd3LnBvcnRhbC5jaGVja3BvaW50LmNvbS9hcHAvbWFhcy9hcGkvdjEvdGVuYW50LzYxNmE2YzhmLTYzMWQtNDZlZC05MzRiLTkyNzA0NDYzNmI4MS9hY2Nlc3Mta2V5cy8/b3RwPTNiNDQ4NDc1LWQ2ODItNGQwNS05ZGU3LTk3MTIwOTQxM2JkZA==
+nano-egg --install --token cp-4da44dcc-e2b4-4bb2-81a7-f2d45b33f3c5179610fc-6dea-4da1-a5dc-f327e9f8f4a2 
