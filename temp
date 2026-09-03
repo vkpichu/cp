@@ -1,80 +1,40 @@
-add bonding group 1
-add bonding group 2
-add bonding group 9
-set bonding group 1 mode 8023AD
-set bonding group 1 lacp-rate slow
-set bonding group 1 mii-interval 100
-set bonding group 1 down-delay 200
-set bonding group 1 up-delay 200
-set bonding group 1 xmit-hash-policy layer2
-set bonding group 2 mode 8023AD
-set bonding group 2 lacp-rate slow
-set bonding group 2 mii-interval 100
-set bonding group 2 down-delay 200
-set bonding group 2 up-delay 200
-set bonding group 2 xmit-hash-policy layer2
-set bonding group 9 mode 8023AD
-set bonding group 9 lacp-rate slow
-set bonding group 9 mii-interval 100
-set bonding group 9 down-delay 200
-set bonding group 9 up-delay 200
-set bonding group 9 xmit-hash-policy layer2
-add bonding group 1 interface eth3
-add bonding group 1 interface eth4
-add bonding group 2 interface eth5
-add bonding group 2 interface eth6
-add bonding group 9 interface eth7
-add bonding group 9 interface eth8
-add interface bond1 vlan 5
-add interface bond1 vlan 6
-add interface bond1 vlan 11
-add interface bond1 vlan 12
-add interface bond1 vlan 13
-add interface bond1 vlan 17
-add interface bond2 vlan 14
-add interface bond2 vlan 15
-add interface bond2 vlan 16
-add interface bond2 vlan 114
-add interface bond2 vlan 115
-add interface bond2 vlan 116
-add interface bond2 vlan 20
+add dhcp server subnet 10.1.1.0 netmask 24
+set dhcp server subnet 10.1.1.0 default-lease 43200
+set dhcp server subnet 10.1.1.0 max-lease 43200
+set dhcp server subnet 10.1.1.0 dns "8.8.8.8, 4.4.2.2"
+set dhcp server subnet 10.1.1.0 default-gateway 10.1.1.1
+add dhcp server subnet 10.1.1.0 include-ip-pool start 10.1.1.11 end 10.1.1.250
+set dhcp server subnet 10.1.1.0 enable
 
-set interface bond1.6 comments "Firewall MGMT"
-set interface bond1.6 state on
-set interface bond1.6 ipv4-address 10.1.0.34 mask-length 29
-set interface bond1.5 comments "MGMT"
-set interface bond1.5 state on
-set interface bond1.5 ipv4-address 10.1.0.2 mask-length 28
-set interface bond1.11 comments "User LAN Wired"
-set interface bond1.11 state on
-set interface bond1.11 ipv4-address 10.1.1.2 mask-length 24
-set interface bond1.12 comments "BFM BLS CORP"
-set interface bond1.12 state on
-set interface bond1.12 ipv4-address 10.1.2.2 mask-length 24
-set interface bond1.13 comments "VOICE"
-set interface bond1.13 state on
-set interface bond1.13 ipv4-address 10.1.3.2 mask-length 24
-set interface bond2.14 comments "PRINTER"
-set interface bond2.14 state on
-set interface bond2.14 ipv4-address 10.1.4.2 mask-length 25
-set interface bond2.114 comments "FUTURE 2"
-set interface bond2.114 state on
-set interface bond2.114 ipv4-address 10.1.4.130 mask-length 25
-set interface bond2.15 comments "FUTURE"
-set interface bond2.15 state on
-set interface bond2.15 ipv4-address 10.1.5.2 mask-length 25
-set interface bond2.16 comments "ATTENDANCE"
-set interface bond2.16 state on
-set interface bond2.16 ipv4-address 10.1.6.2 mask-length 25
-set interface bond2.116 comments "CAMERA"
-set interface bond2.116 state on
-set interface bond2.116 ipv4-address 10.1.6.130 mask-length 25
-set interface bond1.17 comments "USER VLAN WIRED"
-set interface bond1.17 state on
-set interface bond1.17 ipv4-address 10.1.7.2 mask-length 24
-set interface bond2.115 comments "UPS MGMT"
-set interface bond2.115 state on
-set interface bond2.115 ipv4-address 10.1.5.130 mask-length 25
-set interface bond2.20 comments "GUEST"
-set interface bond2.20 state on
-set interface bond2.20 ipv4-address 192.168.0.2 mask-length 23
+add dhcp server subnet 10.1.2.0 netmask 24
+set dhcp server subnet 10.1.2.0 default-lease 43200
+set dhcp server subnet 10.1.2.0 max-lease 43200
+set dhcp server subnet 10.1.2.0 dns "8.8.8.8, 4.4.2.2"
+set dhcp server subnet 10.1.2.0 default-gateway 10.1.2.1
+add dhcp server subnet 10.1.2.0 include-ip-pool start 10.1.2.11 end 10.1.2.250
+set dhcp server subnet 10.1.2.0 enable
+
+add dhcp server subnet 10.1.3.0 netmask 24
+set dhcp server subnet 10.1.3.0 default-lease 43200
+set dhcp server subnet 10.1.3.0 max-lease 43200
+set dhcp server subnet 10.1.3.0 dns "8.8.8.8, 4.4.2.2"
+set dhcp server subnet 10.1.3.0 default-gateway 10.1.3.1
+add dhcp server subnet 10.1.3.0 include-ip-pool start 10.1.3.11 end 10.1.3.250
+set dhcp server subnet 10.1.3.0 enable
+
+add dhcp server subnet 10.1.7.0 netmask 24
+set dhcp server subnet 10.1.7.0 default-lease 43200
+set dhcp server subnet 10.1.7.0 max-lease 43200
+set dhcp server subnet 10.1.7.0 dns "8.8.8.8, 4.4.2.2"
+set dhcp server subnet 10.1.7.0 default-gateway 10.1.7.1
+add dhcp server subnet 10.1.7.0 include-ip-pool start 10.1.7.11 end 10.1.7.250
+set dhcp server subnet 10.1.7.0 enable
+
+add dhcp server subnet 192.168.0.0 netmask 23
+set dhcp server subnet 192.168.0.0 default-lease 43200
+set dhcp server subnet 192.168.0.0 max-lease 43200
+set dhcp server subnet 192.168.0.0 dns "8.8.8.8, 4.4.2.2"
+set dhcp server subnet 192.168.0.0 default-gateway 192.168.0.1
+add dhcp server subnet 192.168.0.0 include-ip-pool start 192.168.0.11 end 192.168.1.254
+set dhcp server subnet 192.168.0.0 enable
+
