@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20260902
+# last update 20260917
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -16,7 +16,7 @@
 # v2.2 - ISP redundancy, reverse proxy cli checks
 # v2.3 - maas status checks 
 # v2.3 - VSX configurations
-# v2.4 - Added interface status and updated ethtool, added Management info 51, enhanced chk 28, added more bgp commands
+# v2.4 - Added interface status and updated ethtool, added Management info 51, enhanced chk 28, added more bgp commands, added cplp commands
 # 
 ##############
 # REMOVE OLD FILES
@@ -668,20 +668,26 @@ echo "52. Management checks"
 	printf "%s\n" "---Management Checks---" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "Management Checks" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "api status" >> $HOSTNAME-infocollector2.txt 2>&1
 	api status >> $HOSTNAME-infocollector2.txt 2>&1	
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "cpstat mg" >> $HOSTNAME-infocollector2.txt 2>&1
 	cpstat mg >> $HOSTNAME-infocollector2.txt 2>&1	
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "mdsstat" >> $HOSTNAME-infocollector2.txt 2>&1
 	mdsstat >> $HOSTNAME-infocollector2.txt 2>&1	
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "53. CPLP Check"
 	printf "%s\n" "---CPLP Checks---" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "cplp list" >> $HOSTNAME-infocollector2.txt 2>&1
 	cplp list >> $HOSTNAME-infocollector2.txt 2>&1	
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "cplp coverage" >> $HOSTNAME-infocollector2.txt 2>&1
 	cplp coverage >> $HOSTNAME-infocollector2.txt 2>&1	
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "cplp status --all" >> $HOSTNAME-infocollector2.txt 2>&1
 	cplp status --all >> $HOSTNAME-infocollector2.txt 2>&1	
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
