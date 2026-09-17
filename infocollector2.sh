@@ -675,7 +675,18 @@ echo "52. Management checks"
 	mdsstat >> $HOSTNAME-infocollector2.txt 2>&1	
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
-echo "53. VSX information"
+echo "53. CPLP Check"
+	printf "%s\n" "---CPLP Checks---" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	cplp list >> $HOSTNAME-infocollector2.txt 2>&1	
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	cplp coverage >> $HOSTNAME-infocollector2.txt 2>&1	
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	cplp status --all >> $HOSTNAME-infocollector2.txt 2>&1	
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+#
+echo "54. VSX information"
 	printf "%s\n" "---VSX information---" >> $HOSTNAME-infocollector2.txt 2>&1
 	# Get VSIDs from 'vsx stat -v'
 	VSIDS=$(vsx stat -v 2>/dev/null | awk '
