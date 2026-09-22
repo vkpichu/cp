@@ -22,7 +22,12 @@
 # REMOVE OLD FILES
 
 #!/bin/bash
-
+# Variable declaration
+HOSTNAME=`cat /var/tmp/hostname-infocollector2.txt`
+VER="v2.4"
+DATE=$(date +"%Y%m%d_%H%M%S")
+PWD=$(pwd)
+#
 SCRIPT_VERSION="20260923"
 UPDATE_URL="https://raw.githubusercontent.com/vkpichu/cp/main/infocollector2.sh"
 
@@ -55,12 +60,6 @@ rm -rf $HOSTNAME-infocollector2.txt
 # SCRIPT
 clish -c "lock database override" >> $HOSTNAME-infocollector2.txt 2>&1
 clish -c "show configuration hostname" | awk '{print $3}' >> /var/tmp/hostname-infocollector2.txt
-# Variable declaration
-HOSTNAME=`cat /var/tmp/hostname-infocollector2.txt`
-VER="v2.4"
-DATE=$(date +"%Y%m%d_%H%M%S")
-PWD=$(pwd)
-#
 printf ""
 printf "%s\n" "--------infocollector2 $VER outputs of $HOSTNAME on $DATE--------" >> $HOSTNAME-infocollector2.txt 2>&1
 printf ""
