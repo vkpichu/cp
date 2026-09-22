@@ -23,7 +23,7 @@
 
 #!/bin/bash
 
-SCRIPT_VERSION="20260919"
+SCRIPT_VERSION="20260923"
 UPDATE_URL="https://raw.githubusercontent.com/vkpichu/cp/main/infocollector2.sh"
 
 self_update() {
