@@ -20,6 +20,35 @@
 # 
 ##############
 # REMOVE OLD FILES
+
+#!/bin/bash
+
+SCRIPT_VERSION="20260919"
+UPDATE_URL="https://raw.githubusercontent.com/vkpichu/cp/main/infocollector2.sh"
+
+self_update() {
+    TMP_FILE="/tmp/infocollector2.sh.$$"
+    # Download latest script
+    curl -fsSL "$UPDATE_URL" -o "$TMP_FILE" || return
+    # Extract version from downloaded script
+    REMOTE_VERSION=$(grep '^SCRIPT_VERSION=' "$TMP_FILE" | head -1 | cut -d'"' -f2)
+    [ -z "$REMOTE_VERSION" ] && rm -f "$TMP_FILE" && return
+    if [[ "$REMOTE_VERSION" > "$SCRIPT_VERSION" ]]; then
+        echo "New version found: $REMOTE_VERSION"
+        echo "Updating infocollector..."
+        chmod +x "$TMP_FILE"
+        # Replace current script
+        cp "$TMP_FILE" "$0"
+        echo "Restarting with new version..."
+        exec "$0" "$@"
+    fi
+    rm -f "$TMP_FILE"
+}
+self_update "$@"
+echo "Running version $SCRIPT_VERSION"
+
+# rest of your script
+
 rm -rf /var/tmp/hostname-infocollector2.txt
 rm -rf $HOSTNAME-infocollector2.txt
 #
