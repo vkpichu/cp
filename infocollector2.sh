@@ -44,10 +44,10 @@ echo "01. Configuration Backup"
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show configuration" >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
-	printf "%s\n" "---VPN tunnel Backup---" >> $HOSTNAME-infocollector2.txt 2>&1
-	printf "%s\n" "show configuration vpnt" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---SMS allowed clients---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "cp_conf client get" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
-	clish -c "show configuration vpnt" >> $HOSTNAME-infocollector2.txt 2>&1
+	clish -c "cp_conf client get" >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "---uptime---" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
