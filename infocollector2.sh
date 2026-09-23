@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20260923
+# last update 20260924
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -412,6 +412,11 @@ echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "ips stat" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	ips stat >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---QOS policy stat---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "fgate stat" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	fgate stat >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "29. Dynamic Split Status"
