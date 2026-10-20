@@ -716,7 +716,7 @@ echo "54. VSX information"
 		vsx stat -l >> $HOSTNAME-infocollector2.txt 2>&1	
 		for VSID in $VSIDS; do
 			echo "-----VSID $VSID : show configuration-----" >> $HOSTNAME-infocollector2.txt 2>&1
-			clish -c "set virtual-system $VSID"
+			clish -c "set virtual-system $VSID" >> $HOSTNAME-infocollector2.txt 2>&1
 			clish -c "show configuration" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "-----VSID $VSID : cluster interfaces-----" >> $HOSTNAME-infocollector2.txt 2>&1
