@@ -708,6 +708,10 @@ echo "54. VSX information"
 	if [ -z "$VSIDS" ]; then
 		echo "This is not a VSX gateway." >> $HOSTNAME-infocollector2.txt 2>&1
 	else
+		echo "VSX commands are executing" >> $HOSTNAME-infocollector2.txt 2>&1
+		echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+		echo "$VSIDS" >> $HOSTNAME-infocollector2.txt 2>&1
+		echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		printf "%s\n" "vsx stat -v" >> $HOSTNAME-infocollector2.txt 2>&1
 		echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		vsx stat -v >> $HOSTNAME-infocollector2.txt 2>&1	
