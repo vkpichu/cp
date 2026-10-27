@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20262010
+# last update 20261027
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -193,6 +193,11 @@ echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	cphaprob show_failover >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---High Availability bond status---" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "cphaprob show_bond" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	cphaprob show_bond >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "12. High Availability Interface Status"
 	printf "%s\n" "---High Availability Interface Status---" >> $HOSTNAME-infocollector2.txt 2>&1
@@ -378,6 +383,10 @@ echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "---raid status---" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	raid_diagnostic >> $HOSTNAME-infocollector2.txt 2>&1
+echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---lvm overview---" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	clish -c "show system lvm overview" >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "27. CP Watch Dog"
@@ -723,13 +732,23 @@ echo "54. VSX information"
 			clish -c "set virtual-system $VSID" >> $HOSTNAME-infocollector2.txt 2>&1
 			clish -c "show configuration" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+			#
 			echo "-----VSID $VSID : cluster interfaces-----" >> $HOSTNAME-infocollector2.txt 2>&1
 			vsenv "$VSID" >> $HOSTNAME-infocollector2.txt 2>&1
 			cphaprob stat >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			cphaprob -a if >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+			#
+			printf "%s\n" "---dynamic ARP details---" >> $HOSTNAME-infocollector2.txt 2>&1
 			clish -c 'show arp dynamic all' >> $HOSTNAME-infocollector2.txt 2>&1
+			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+			#
+			printf "%s\n" "---High Availability bond status---" >> $HOSTNAME-infocollector2.txt 2>&1
+			printf "%s\n" "cphaprob show_bond" >> $HOSTNAME-infocollector2.txt 2>&1
+			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+			cphaprob show_bond >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#Proxy ARP
 			PROXYARP=$FWDIR/conf/local.arp
