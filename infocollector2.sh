@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20261028
+# last update 20261027
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -745,14 +745,15 @@ echo "54. VSX information"
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			#
+			printf "%s\n" "---show configuration bootp---" >> $HOSTNAME-infocollector2.txt 2>&1
+			printf "%s\n" "show configuration bootp" >> $HOSTNAME-infocollector2.txt 2>&1
+			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+			clish -c "show configuration bootp" >> $HOSTNAME-infocollector2.txt 2>&1
+			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#Proxy ARP
-			PROXYARP=$FWDIR/conf/local.arp
-			if [ -f "$PROXYARP" ]; then
-				echo "$PROXYARP exists." >> $HOSTNAME-infocollector2.txt 2>&1
-				cat $PROXYARP >> $HOSTNAME-infocollector2.txt 2>&1
-			else 
-				echo "$PROXYARP does not exist." >> $HOSTNAME-infocollector2.txt 2>&1
-			fi
+			echo "-----VSID $VSID : proxy arp-----" >> $HOSTNAME-infocollector2.txt 2>&1
+			vsenv "$VSID" >> $HOSTNAME-infocollector2.txt 2>&1
+			cat $FWDIR/conf/local.arp >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#$FWDIR/boot/modules/fwkern.conf
 			FWKERN=$FWDIR/boot/modules/fwkern.conf
