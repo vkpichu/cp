@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20261027
+# last update 20261028
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -745,11 +745,6 @@ echo "54. VSX information"
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			#
-			printf "%s\n" "---High Availability bond status---" >> $HOSTNAME-infocollector2.txt 2>&1
-			printf "%s\n" "cphaprob show_bond" >> $HOSTNAME-infocollector2.txt 2>&1
-			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
-			cphaprob show_bond >> $HOSTNAME-infocollector2.txt 2>&1
-			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#Proxy ARP
 			PROXYARP=$FWDIR/conf/local.arp
 			if [ -f "$PROXYARP" ]; then
