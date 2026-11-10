@@ -3,7 +3,7 @@
 . /etc/profile.d/vsenv.sh
 #
 # Script: infocollector2.sh
-# last update 20261027
+# last update 20261110
 # Script by : VK Prasad, Professional Services Consultant
 # Copyrights:  Check Point Software Technologies LTD.
 #
@@ -28,7 +28,7 @@ clish -c "lock database override" >> $HOSTNAME-infocollector2.txt 2>&1
 clish -c "show configuration hostname" | awk '{print $3}' >> /var/tmp/hostname-infocollector2.txt
 # Variable declaration
 HOSTNAME=`cat /var/tmp/hostname-infocollector2.txt`
-VER="v2.4"
+VER="v2.4_20261110"
 DATE=$(date +"%Y%m%d_%H%M%S")
 PWD=$(pwd)
 #
@@ -264,6 +264,9 @@ echo "16. Routing Information"
 	printf "%s\n" "show bgp summary" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show bgp summary" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "show bgp peers" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
+	clish -c "show bgp peers" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "show bgp peers detailed" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show bgp peers detailed" >> $HOSTNAME-infocollector2.txt 2>&1
@@ -740,23 +743,24 @@ echo "54. VSX information"
 			cphaprob -a if >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			#
-			printf "%s\n" "---dynamic ARP details---" >> $HOSTNAME-infocollector2.txt 2>&1
+			printf "%s\n" "---VSID $VSID :dynamic ARP details---" >> $HOSTNAME-infocollector2.txt 2>&1
 			clish -c 'show arp dynamic all' >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			#
-			printf "%s\n" "---show configuration bootp---" >> $HOSTNAME-infocollector2.txt 2>&1
+			printf "%s\n" "---VSID $VSID :show configuration bootp---" >> $HOSTNAME-infocollector2.txt 2>&1
 			printf "%s\n" "show configuration bootp" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			clish -c "show configuration bootp" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#Proxy ARP
-			echo "-----VSID $VSID : proxy arp-----" >> $HOSTNAME-infocollector2.txt 2>&1
+			printf "-----VSID $VSID : proxy arp-----" >> $HOSTNAME-infocollector2.txt 2>&1
 			vsenv "$VSID" >> $HOSTNAME-infocollector2.txt 2>&1
 			cat $FWDIR/conf/local.arp >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#$FWDIR/boot/modules/fwkern.conf
 			FWKERN=$FWDIR/boot/modules/fwkern.conf
+			printf "%s\n" "VSID $VSID :---FWKERN Configuration---" >> $HOSTNAME-infocollector2.txt 2>&1
 			if [ -f "$FWKERN" ]; then
 				echo "$FWKERN exists." >> $HOSTNAME-infocollector2.txt 2>&1
 				cat $FWKERN >> $HOSTNAME-infocollector2.txt 2>&1
@@ -765,7 +769,7 @@ echo "54. VSX information"
 			fi
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 		#$FWDIR/boot/modules/simkern.conf
-			printf "%s\n" "---SIMKERN Configuration---" >> $HOSTNAME-infocollector2.txt 2>&1
+			printf "%s\n" "VSID $VSID :---SIMKERN Configuration---" >> $HOSTNAME-infocollector2.txt 2>&1
 			printf "%s\n" "$FWDIR/boot/modules/simkern.conf" >> $HOSTNAME-infocollector2.txt 2>&1
 			echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 			SIMKERN=$FWDIR/boot/modules/simkern.conf
