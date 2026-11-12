@@ -62,6 +62,9 @@ echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	printf "%s\n" "---show snapshots---" >> $HOSTNAME-infocollector2.txt 2>&1
 	echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 	clish -c "show snapshots" >> $HOSTNAME-infocollector2.txt 2>&1
+	printf "%s\n" "---dhcp bindings---" >> $HOSTNAME-infocollector2.txt 2>&1
+	echo "cat /etc/dhcpd.private" >> $HOSTNAME-infocollector2.txt 2>&1
+	cat /etc/dhcpd.private >> $HOSTNAME-infocollector2.txt 2>&1
 echo "" >> $HOSTNAME-infocollector2.txt 2>&1
 #
 echo "02. Asset Information"
